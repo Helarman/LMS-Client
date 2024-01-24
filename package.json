@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@uploadthing/react": "^6.2.0",
     "axios": "^1.6.5",
     "next": "14.0.4",
     "next-auth": "^4.24.5",
@@ -24,7 +25,8 @@
     "react-select": "^5.8.0",
     "screenfull": "^6.0.2",
     "toast": "^0.5.4",
-    "toasts": "^1.0.0"
+    "toasts": "^1.0.0",
+    "uploadthing": "^6.2.0"
   },
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",

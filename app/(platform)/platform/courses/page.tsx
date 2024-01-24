@@ -1,22 +1,30 @@
 import getCourses from "@/app/actions/getCourses";
 import CoursesClient from "./CoursesClient";
 import EmptyState from "@/app/components/Courses/EmptyState";
+import { CategoryProps } from "@/app/components/Search/CategoryBox";
+import getCategories from "@/app/actions/getCategories"
+import Search from "@/app/components/Search/Search";
 
-const Courses = async () => {
-    const coursesData = await getCourses()
-    
+const Courses = async ({ searchParams }) => {
+    console.log(searchParams)
+    const coursesData = await getCourses(searchParams)
+    const categories: CategoryProps[] = await getCategories()
+
+
+
 
     if (coursesData.length < 1) {
         return (
             <>
-                <EmptyState  title="Courses" subTitle="Lorem ipsum dolor sit amet" />
+                <Search categories={categories} />
+                <EmptyState title="Courses" subTitle="Lorem ipsum dolor sit amet" buttonLabel="Remove filter" url="/platform/courses" />
             </>
         )
     }
 
     return (
         <>
-            <CoursesClient coursesData={coursesData}/>
+            <CoursesClient coursesData={coursesData} categoriesList={categories} />
         </>
     )
 }
