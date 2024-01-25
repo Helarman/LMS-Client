@@ -6,7 +6,7 @@ import getCategories from "@/app/actions/getCategories"
 import Search from "@/app/components/Search/Search";
 
 const Courses = async ({ searchParams }) => {
-    console.log(searchParams)
+
     const coursesData = await getCourses(searchParams)
     const categories: CategoryProps[] = await getCategories()
 

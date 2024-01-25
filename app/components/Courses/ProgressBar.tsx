@@ -2,14 +2,16 @@
 
 import { useRouter } from "next/navigation"
 
-import {FaCheck } from "react-icons/fa6";
+import { FaCheck } from "react-icons/fa6";
+import { PiExamFill } from "react-icons/pi";
 
 interface ProgressBarProps {
     progress?: number;
     available: boolean;
+    type?: string
 }
 
-const ProgressBar: React.FC<ProgressBarProps> = ({progress, available}) => {
+const ProgressBar: React.FC<ProgressBarProps> = ({ progress, available, type }) => {
     const router = useRouter()
     let roundedProgress
     let strokeDashoffset
@@ -31,7 +33,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({progress, available}) => {
 
                         <circle cx="18" cy="18" r="16" fill="none"
                             className={`
-                                ${roundedProgress == 100 ? 'text-emerald-400' : 'text-gray-200'}
+                                ${roundedProgress == 100 || type === 'examination' ? 'text-emerald-400' : 'text-gray-200'}
                                 stroke-current 
                             `}
                             strokeWidth="2"></circle>
@@ -40,7 +42,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({progress, available}) => {
                             <circle
                                 cx="18" cy="18" r="16" fill="none"
                                 className={`
-                                    ${roundedProgress == 0 ? 'text-gray-200 ' : 'text-emerald-400'}
+                                    ${roundedProgress == 0 && type != 'examination' ? 'text-gray-200 ' : 'text-emerald-400'}
                                     stroke-current 
                                 `}
                                 strokeWidth="2"
@@ -49,17 +51,24 @@ const ProgressBar: React.FC<ProgressBarProps> = ({progress, available}) => {
                             ></circle>
                         </g>
                     </svg>
+                    {type === 'examination' ?
+                        <div className="absolute top-1/2 start-1/2 transform -translate-y-1/2 -translate-x-1/2">
+                            <span className="text-center text-2xl font-bold text-gray-800">
+                                <PiExamFill className="w-10 h-10"/>
+                            </span>
+                        </div>
+                        :
 
-                    <div className="absolute top-1/2 start-1/2 transform -translate-y-1/2 -translate-x-1/2">
-                        <span className="text-center text-2xl font-bold text-gray-800">
-                            {roundedProgress == 100 ?
-                                <FaCheck />
-                                :
-                                `${roundedProgress}%`
-                            }
-
-                        </span>
-                    </div>
+                        <div className="absolute top-1/2 start-1/2 transform -translate-y-1/2 -translate-x-1/2">
+                            <span className="text-center text-2xl font-bold text-gray-800">
+                                {roundedProgress == 100 ?
+                                    <FaCheck />
+                                    :
+                                    `${roundedProgress}%`
+                                }
+                            </span>
+                        </div>
+                    }
                 </div >
             </>
         )

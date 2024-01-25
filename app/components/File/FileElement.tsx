@@ -1,16 +1,50 @@
 'use client'
 import { UploadDropzone } from "@uploadthing/react";
-import { OurFileRouter } from "@/app/api/uploadthing/core";
-import { UploadButton } from "@/app/utils/uploadthing";
+import type { OurFileRouter } from "@/app/api/uploadthing/core";
 import toast from "react-hot-toast";
+import { useParams, useRouter } from "next/navigation";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
-const FileElement = ({ }) => {
+
+const FileElement = ({ currentUserId }: { currentUserId: any }) => {
+    const pathname = useParams();
+    const router = useRouter();
+    const [userId, setUserId] = useState(0)
+
+    useEffect(() => {
+        setUserId(currentUserId.value as number)
+    })
+
+    const onSubmit = async (url: string) => {
+        
+        if (!pathname) return;
+
+        try {
+            await axios.post('http://127.0.0.1:1337/api/results?populate=*',
+                {
+                    data: {
+                        type: 'examination',
+                        fileLink: url,
+                        user: userId,
+                        item: pathname.lessonId
+                    },
+                })
+            toast.success("Course updated");
+            router.refresh();
+
+        } catch (error: any) {
+            toast.error("Something went wrong", error);
+        }
+    };
+
     return (
-        <div
-            className="relative inline-block focus:outline-none focus:ring w-full h-full aspect-video"
-        >
-            <span
-                className={`
+        <div>
+            <div
+                className="relative inline-block focus:outline-none focus:ring w-full h-full aspect-video"
+            >
+                <span
+                    className={`
                     h-full
                     w-full
                     absolute 
@@ -20,12 +54,12 @@ const FileElement = ({ }) => {
                     transition-transform 
                     bg-indigo-50
                 `}
-            >
+                >
 
-            </span>
+                </span>
 
-            <span
-                className={`
+                <span
+                    className={`
                     h-full
                     w-full
                     relative 
@@ -40,12 +74,12 @@ const FileElement = ({ }) => {
                     text-gray-800
                     
                 `}
-            >
-                <UploadDropzone<OurFileRouter>
-                    appearance={{
-                        button: "ut-ready:bg-emerald-400 text-gray-800 ut-uploading:cursor-not-allowed  ut-uploading:bg-emerald-300 after:bg-emerald-400",
-                    }}                    
-                    className="
+                >
+                    <UploadDropzone<OurFileRouter>
+                        appearance={{
+                            button: "ut-ready:bg-emerald-400 text-gray-800 ut-uploading:cursor-not-allowed  ut-uploading:bg-emerald-300 after:bg-emerald-400",
+                        }}
+                        className="
                         h-full 
                         ut-label:text-lg 
                         ut-readying:border-none 
@@ -53,21 +87,22 @@ const FileElement = ({ }) => {
                         ut-label:text-gray-800 
                         ut-allowed-content:opacity-60
                     "
-                    endpoint="pdfUploader"
-                    onClientUploadComplete={(res) => {
-                        toast.success(res?.[0].url);
-                        toast.success("Upload Completed");
-                        
-                    }}
-                    onUploadError={(error: Error) => {
-                        toast.error(`Upload error!`);
-                        
-                    }}
-                   
-                />
+                        endpoint="pdfUploader"
+                        onClientUploadComplete={(res) => {
+                            onSubmit(res?.[0].url, userId)
+                            toast.success("Upload Completed");
+
+                        }}
+                        onUploadError={(error: Error) => {
+                            toast.error(`Upload error!`);
+
+                        }}
+
+                    />
 
 
-            </span>
+                </span>
+            </div>
         </div>
     )
 };

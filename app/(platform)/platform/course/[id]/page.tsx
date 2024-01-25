@@ -8,7 +8,6 @@ interface IParams {
 const Page = async ({ params }: { params: IParams }) => {
   const id = params.id
   const courseData = await getCourseById( {id: params.id} )
-  console.log(courseData)
 
   return (
     <div>

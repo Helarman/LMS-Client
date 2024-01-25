@@ -18,7 +18,8 @@ interface CourseCardProps {
     available: boolean;
     progress?: number;
     categories: CategoriesProps[]
-    items?: any
+    items?: any;
+    type?: string;
 }
 const CourseCard: React.FC<CourseCardProps> = ({
     id,
@@ -28,7 +29,6 @@ const CourseCard: React.FC<CourseCardProps> = ({
     price,
     categories,
     items,
-
     available
 }) => {
     const router = useRouter()
@@ -43,7 +43,7 @@ const CourseCard: React.FC<CourseCardProps> = ({
                 className="group hover:bg-indigo-50 bg-white p-4 ring ring-indigo-50 sm:p-6 lg:p-8 cursor-pointer">
                 <div className="flex items-center sm:gap-8">
                     <div className=" relative w-72">
-                        <ProgressBar progress={progress} available={available} />
+                        <ProgressBar progress={progress} available={available}  />
                     </div>
 
                     <div className="items-center">

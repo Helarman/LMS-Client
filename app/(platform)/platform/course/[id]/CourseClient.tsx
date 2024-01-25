@@ -16,7 +16,7 @@ interface CourseClient {
 const CoursesClient: React.FC<CourseClient> = ({
     courseData
 }) => {
-    console.log(courseData.attributes.items.data)
+    
     return (
         <div>
             <CourseHeader title={courseData.attributes.title} description={courseData.attributes.description}/>

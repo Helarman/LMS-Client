@@ -13,7 +13,6 @@ export default async function getCurrentUser() {
         const res = await axios.get(`http://127.0.0.1:1337/api/users?filters[email][$eq]=${session.user.email}&populate=*`);
 
         const currentUser = res.data[0]
-
         if (!currentUser) {
             return null;
         }

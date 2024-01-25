@@ -1,8 +1,19 @@
 'use client'
 
-import Button from "../Button/Button";
+interface TestDetailItemProps{
+    question: string;
+    count: number;
+    image: any;
+    answers: any;
+}
 
-const TestSelectItem = ({ }) => {
+
+const TestDetailItem: React.FC<TestDetailItemProps> = ({
+    question,
+    count,
+    image,
+    answers
+}) => {
     return (
         <div
             className="
@@ -16,9 +27,9 @@ const TestSelectItem = ({ }) => {
 
 
             <div className="flex flex-col w-full ">
-                <h3 className="text-2xl">Which came first: the chicken or the egg?</h3>
+                <h3 className="text-2xl">{question}</h3>
                 <fieldset className="space-y-4 w-full">
-                    <legend className="sr-only">Lorem ipsum </legend>
+                    <legend className="sr-only">{question}</legend>
 
                     <div>
                         <div className="flex bg-white outline-none w-full cursor-text">
@@ -66,7 +77,7 @@ const TestSelectItem = ({ }) => {
                                     Answer
                                 </span>
 
-                            </label>то
+                            </label>
                         </div>
                     </div>
                 </fieldset>
@@ -78,4 +89,4 @@ const TestSelectItem = ({ }) => {
     )
 }
 
-export default TestSelectItem;
+export default TestDetailItem;

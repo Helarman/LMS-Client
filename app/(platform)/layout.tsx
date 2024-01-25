@@ -15,7 +15,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <LayoutPlatform>
+    <LayoutPlatform >
       {children}
     </LayoutPlatform>
   )

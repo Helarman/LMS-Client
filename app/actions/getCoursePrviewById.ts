@@ -2,7 +2,7 @@
 import { getServerSession } from "next-auth"
 import axios from "axios";
 
-export default async function getCurrentUser() {
+export default async function getCoursePrviewById() {
     try {
         const session = await getServerSession();
 

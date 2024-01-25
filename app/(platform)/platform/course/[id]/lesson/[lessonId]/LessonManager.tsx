@@ -3,6 +3,7 @@ import VideoElement from "@/app/components/VideoPlayer/VideoElement";
 import AudioElement from "@/app/components/AudioPlayer/AudioElement";
 import TestElement from "@/app/components/Test/TestElement";
 import FileElement from "@/app/components/File/FileElement";
+import getCurrentUser from "@/app/actions/getCurrentUser";
 
 interface getLessonProps {
     __component: string;
@@ -18,7 +19,14 @@ interface LessonsArrayProps {
     file: any
 }
 
+const getUser = async () =>{
+    const currentUser =  await getCurrentUser()
+    return currentUser.id
+}
 const getLessonComponent: React.FC<getLessonProps> = ({ __component, ...rest }, index) => {
+
+   
+    
     let Lesson;
     
     const key = __component
@@ -35,11 +43,11 @@ const getLessonComponent: React.FC<getLessonProps> = ({ __component, ...rest }, 
 
     Lesson = Lessons[key as keyof LessonsArrayProps]
 
-    return Lesson ? <Lesson key={index} {...rest} /> : null;
+    return Lesson ? <Lesson key={index} {...rest} currentUserId={getUser()} />: null;
 };
 
 const LessonManager = ({ elements }: { elements: any }) => {
-    return <div>{elements.map(getLessonComponent)}</div>;
+    return <div >{elements.map(getLessonComponent)}</div>;
 };
 
 LessonManager.defaultProps = {

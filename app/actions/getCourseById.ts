@@ -8,7 +8,6 @@ interface IParams {
 
 
 export default async function getCourseById({ id }: { id: number }) {
-    console.log(id)
     try {
         const session = await getServerSession();
         if (!session?.user?.email) {
