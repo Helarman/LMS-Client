@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 import { AiOutlineMenuUnfold, AiOutlineMenuFold } from "react-icons/ai";
-import { FaHouse, FaTable, FaBook, FaBookBookmark, FaClipboardQuestion   } from "react-icons/fa6";
+import { FaHouse, FaTable, FaBook, FaBookBookmark, FaClipboardQuestion, FaMessage} from "react-icons/fa6";
 
 import MenuItem from "./MenuItem";
 
@@ -13,7 +13,8 @@ const NavLinks = [
     { label: 'Overview', link: '/platform', icon: FaTable },
     { label: 'Your courses', link: '/platform/courses/available', icon: FaBookBookmark },
     { label: 'Courses', link: '/platform/courses', icon: FaBook  },
-    { label: 'FAQ', link: '/faq', icon: FaClipboardQuestion },
+    { label: 'FAQ', link: '/platform/faq', icon: FaClipboardQuestion },
+    { label: 'Feedback', link: '/platform/feedback', icon: FaMessage  }
 ]
 
 const Sidebar = ({

@@ -1,8 +1,17 @@
 'use client'
 
+import toast from "react-hot-toast";
+
+interface AnswerProps {
+    id: number
+    text: string;
+    isRight: boolean
+}
+
 interface TestDetailItemProps{
     question: string;
     count: number;
+    handleAnswer: (count: number) => void;
     image: any;
     answers: any;
 }
@@ -10,10 +19,27 @@ interface TestDetailItemProps{
 
 const TestDetailItem: React.FC<TestDetailItemProps> = ({
     question,
+    handleAnswer,
     count,
     image,
     answers
 }) => {
+    //get right answer
+    const rightAnswer = answers && answers.find((answer: AnswerProps) => answer.isRight === true)
+
+    //handle undefined state of righ answer
+    if(rightAnswer == undefined){
+        toast.error('Cannot find the right answer. Please contact the administrator via the form on the FAQ page')
+    }
+
+    //transwer data to TestElement
+    const handleChange = (e: any) => { 
+        if (e.target.value.toLowerCase() === rightAnswer?.text.toLowerCase()) {
+            handleAnswer(count);
+        }
+        return;
+    };
+
     return (
         <div
             className="
@@ -38,11 +64,12 @@ const TestDetailItem: React.FC<TestDetailItemProps> = ({
                                 className="relative w-full block overflow-hidden pt-3 h-36"
                             >
                                 <input
+                                    onChange={handleChange}
                                     type="text"
-                                    id="Search"
-                                    placeholder="Search"
+                                    id="Answer"
+                                    placeholder="Answer"
                                     className="
-                                        
+                                        w-full h-full
                                         peer  
                                          w-full
                                         border-none 

@@ -30,7 +30,7 @@ const FileElement = ({ currentUserId }: { currentUserId: any }) => {
                         item: pathname.lessonId
                     },
                 })
-            toast.success("Course updated");
+            toast.success("Result updated");
             router.refresh();
 
         } catch (error: any) {
