@@ -2,6 +2,18 @@
 
 import CodeArea from "./Code"
 
+type ChildrenProps = {
+    type: string,
+    text?: string,
+    size?: number,
+    italic?: boolean,
+    bold?: boolean,
+    strikethrough?: boolean,
+    underline?: boolean,
+    code?: boolean,
+    url?: string,
+}
+
 type SizesProps = {
     1: string,
     2: string,
@@ -19,10 +31,10 @@ type ElementProps = {
     underline: boolean,
     code?: boolean,
     url?: string,
-    children?: any
+    children?: ChildrenProps[],
 }
 
-interface HeadingProps {
+export interface HeadingProps{
     children: ElementProps[];
     level: number
     type?: string
@@ -44,7 +56,7 @@ const Heading: React.FC<HeadingProps> = ({ children, level, type }) => {
 
     const Element: React.FC<ElementProps> = ({ type, text, children, url, underline, italic, strikethrough, bold, code }) => {
 
-        if (type === 'link') {
+        if (type === 'link' && children) {
             return (
                 <a
                     href={url}

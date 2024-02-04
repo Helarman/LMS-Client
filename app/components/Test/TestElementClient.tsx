@@ -9,12 +9,12 @@ import TestCounter from "./TestCounter";
 import toast from "react-hot-toast";
 import { useParams, useRouter } from "next/navigation";
 import axios from "axios";
-import getResult from "@/app/actions/getFaq";
+import { QuestionProps } from "./TestElement.";
 
 interface TestElementProps {
     title: string;
     description: string;
-    questions: any;
+    questions: QuestionProps[]
     currentUserId: any;
     result: number;
     maxCount: number;
@@ -28,7 +28,6 @@ const TestElemntClient: React.FC<TestElementProps> = ({ title, description, ques
     useEffect(() => {
         setUserId(currentUserId.value as number)
     })
-
    
 
     const [isStarted, setIsStarted] = useState(false)

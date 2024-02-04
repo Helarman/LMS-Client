@@ -27,7 +27,8 @@ const FileElement = ({ currentUserId }: { currentUserId: any }) => {
                         type: 'examination',
                         fileLink: url,
                         user: userId,
-                        item: pathname.lessonId
+                        item: pathname.lessonId,
+                        progress: 100,
                     },
                 })
             toast.success("Result updated");

@@ -1,12 +1,12 @@
 'use client'
 import VideoPlayer from "./VideoPlayer"
-
+import { FileType } from '../../types';
 
 
 interface VideoElemntProps {
     title: string;
     description?: string;
-    file: any; //later
+    file: FileType
 }
 
 

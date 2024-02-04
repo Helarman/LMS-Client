@@ -6,7 +6,11 @@ import ProgressBar from "../Courses/ProgressBar";
 
 interface LessonCardProps {
     id: number;
-    attributes: any;
+    attributes: {
+        title: string;
+        type: string;
+        description: string;
+    }
 }
 
 const LessonCard: React.FC<LessonCardProps> = ({
@@ -19,7 +23,7 @@ const LessonCard: React.FC<LessonCardProps> = ({
         <>
             <article
                 onClick={() => { router.push(`${pathname}/lesson/${id}`) }}
-                className="hover:bg-indigo-50 bg-white p-4 ring ring-indigo-50 sm:p-6 lg:p-8 cursor-pointer">
+                className="hover:bg-indigo-50 bg-white p-4 shadow-lg sm:p-6 lg:p-8 cursor-pointer">
                 <div className="flex items-center sm:gap-8">
                     <div className=" relative w-1/12">
                         <ProgressBar available={true} type={attributes.type}/>

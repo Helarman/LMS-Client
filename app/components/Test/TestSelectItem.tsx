@@ -1,8 +1,9 @@
 'use client'
 import toast from "react-hot-toast";
 import { SetStateAction, useState } from "react";
+import { ImageType } from "@/app/types";
 
-interface AnswerProps {
+export interface AnswerProps {
     id: number
     text: string;
     isRight: boolean
@@ -12,7 +13,7 @@ interface TestSelectItemProps {
     question: string;
     count: number;
     handleAnswer: (count: number) => void;
-    image: any;
+    image: ImageType
     answers: AnswerProps[];
 }
 
@@ -34,7 +35,7 @@ const TestSelectItem: React.FC<TestSelectItemProps> = ({
 
     //transwer data to TestElement
     const handleChange = (e: any) => { 
-        if (e.target.value == rightAnswer?.id) {
+        if (e.target.value== rightAnswer?.id) {
             handleAnswer(count);
         }
         return;

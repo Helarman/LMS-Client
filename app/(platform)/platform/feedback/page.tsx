@@ -11,8 +11,10 @@ import { useRouter } from "next/navigation";
 
 const FeedbackPage = () => {
     const router = useRouter()
-    const { data: session } = useSession()
-
+    const { data: session, status } = useSession()
+    if (!session && status != "loading") {
+        router.push('/login')
+    }
     const [subject, setSubject] = useState('');
     const [message, setMessage] = useState('');
 

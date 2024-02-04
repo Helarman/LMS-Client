@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 
-import LayoutClient from '@/app/components/Layout/LayoutPlatform';
 import LayoutPlatform from '@/app/components/Layout/LayoutPlatform';
 
 

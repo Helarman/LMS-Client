@@ -1,24 +1,47 @@
 'use client'
 
 import { useRouter } from "next/navigation";
-import CoursesSection from "@/app/components/Courses/CoursesSection";
 import Header from "@/app/components/Header/PlatformHeader";
 import { useSession } from "next-auth/react";
+import { useEffect, useState } from "react";
+import FileResultSection from "@/app/components/Result/FileResultSection";
+import TestResultSection from "@/app/components/Result/TestResultSection";
+import CourseResultSection from "@/app/components/Result/CourseResultSection";
 
-const Client = () => {
-
+const Client = ({ itemsResults, coursesResults }) => {
     const router = useRouter();
-    const { data: session } = useSession()
-    //if(!session){
-      //  router.push('/login')
-   // }
+
+    const { data: session, status } = useSession()
+
+    const [hasMounted, setHasmounted] = useState(false);
+    const [hasLogged, sethasLogged] = useState(false);
+
+    useEffect(() => {
+        setHasmounted(true)
+    })
+
+    if (!session && status != "loading") {
+        router.push('/login')
+    }
+
+    if (!hasMounted) {
+        return null;
+    }
+
+
+    const filesResults =  itemsResults && itemsResults.filter((result: any) => result.attributes.fileLink != null)
+    const testsResults =  itemsResults && itemsResults.filter((result: any) => result.attributes.fileLink == null)
+
+
     return (
-        <>
+        <div className="w-full">
             <Header name={session?.user?.name} />
             <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
-               Your progress here
+                <CourseResultSection title="Your courses progress" results={coursesResults} />
+                <FileResultSection title="Your uploaded files scores" results={filesResults} />
+                <TestResultSection title="Your test scores" results={testsResults} />
             </div>
-        </>
+        </div>
     )
 }
 

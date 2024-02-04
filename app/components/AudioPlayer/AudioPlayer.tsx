@@ -19,7 +19,7 @@ interface AudioPlayerProps {
 }
 const AudioPlayer: React.FC<AudioPlayerProps> = ({ title, description, file }) => {
 
-    const url = `http://localhost:1337${file.data.attributes.url}`
+    const url = `https://admin.lms.helarman.pro/${file.data.attributes.url}`
     const [hasMounted, setHasMounted] = useState(false);
 
     useEffect(() => {

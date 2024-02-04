@@ -1,6 +1,6 @@
 'use client'
 
-const TestLayout = ({ children }) => {
+const TestLayout = ({ children }: {children: any}) => {
     return (
         <div
             className="relative inline-block focus:outline-none focus:ring w-full h-full aspect-video"

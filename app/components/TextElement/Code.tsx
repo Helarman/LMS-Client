@@ -20,7 +20,6 @@ interface CodeAreaProps {
 }
 
 const CodeArea: React.FC<CodeAreaProps> = ({ text, children }) => {
- 
     const [copiedText, copy] = useCopyToClipboard()
     const code = text ? text : children && children[0].text
     

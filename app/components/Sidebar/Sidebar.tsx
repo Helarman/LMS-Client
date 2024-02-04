@@ -17,9 +17,7 @@ const NavLinks = [
     { label: 'Feedback', link: '/platform/feedback', icon: FaMessage  }
 ]
 
-const Sidebar = ({
-
-}) => {
+const Sidebar = ({}) => {
 
     const router = useRouter();
     const year = new Date().getFullYear()

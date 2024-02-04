@@ -4,8 +4,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import Search from "@/app/components/Search/Search";
 import SectionHeader from "@/app/components/Header/SectionHeader";
 import CourseCard from "@/app/components/Courses/CourseCard";
-import { useEffect } from "react";
-import toast from "react-hot-toast";
+import { useSession } from "next-auth/react";
 
 interface ClientProps {
     courseData: any
@@ -17,6 +16,12 @@ const Client = ({
 }) => {
     const router = useRouter();
 
+    const { data: session, status } = useSession()
+
+    if (!session && status != "loading") {
+        router.push('/login')
+    }
+    
     const formatCategories = (categories) => {
         const formatedCatgories = categories.map((category) => { return { id: category.id, name: category.attributes.name } })
         return formatedCatgories

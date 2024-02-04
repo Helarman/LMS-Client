@@ -1,5 +1,6 @@
 'use client'
 
+import { ImageType } from "@/app/types";
 import toast from "react-hot-toast";
 
 interface AnswerProps {
@@ -12,8 +13,8 @@ interface TestDetailItemProps{
     question: string;
     count: number;
     handleAnswer: (count: number) => void;
-    image: any;
-    answers: any;
+    image: ImageType;
+    answers: AnswerProps[]
 }
 
 

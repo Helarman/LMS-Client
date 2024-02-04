@@ -1,6 +1,6 @@
 'use client'
-
-import Heading from "./Heading";
+import { Component } from "react";
+import Heading, { HeadingProps } from "./Heading";
 import Paragraph from "./Paragraph";
 import List from "./List";
 import Code from "./Code";
@@ -14,7 +14,7 @@ interface getLessonProps {
 }
 
 interface LessonsArrayProps {
-    heading: any,
+    heading: any
     paragraph: any,
     link: any,
     list: any,
@@ -34,6 +34,8 @@ const getTextElemntComponent: React.FC<getLessonProps> = ({ type, ...rest }, ind
         quote: Quote,
         image: Image,
     }
+
+    console.log(typeof Heading)
 
     Lesson = Lessons[type as keyof LessonsArrayProps]
 

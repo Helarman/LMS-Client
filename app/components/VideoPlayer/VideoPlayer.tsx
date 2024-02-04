@@ -15,15 +15,16 @@ import { FaPlay, FaPause, FaVolumeHigh, FaVolumeXmark, FaMaximize, FaMinimize } 
 
 import { useHideOnMouseStop } from 'react-hide-on-mouse-stop';
 import toast from 'react-hot-toast';
+import { FileType } from '../../types';
 
 interface VideoPlayerProps {
-    title: string,
-    description?: string,
-    file: any
+    title: string;
+    description?: string;
+    file: FileType;
 }
 
 const Player: React.FC<VideoPlayerProps> = ({ title, description, file }) => {
-    const url = `http://localhost:1337${file.data.attributes.url}`
+    const url = `https://admin.lms.helarman.pro${file.data.attributes.url}`
 
     const [hasMounted, setHasMounted] = useState(false);
 

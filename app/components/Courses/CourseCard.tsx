@@ -40,7 +40,7 @@ const CourseCard: React.FC<CourseCardProps> = ({
         <>
             <article
                 onClick={() => router.push(`/platform/course/${id}`)}
-                className="group hover:bg-indigo-50 bg-white p-4 ring ring-indigo-50 sm:p-6 lg:p-8 cursor-pointer">
+                className="group hover:bg-indigo-50 bg-white p-4 shadow-lg sm:p-6 lg:p-8 cursor-pointer">
                 <div className="flex items-center sm:gap-8">
                     <div className=" relative w-72">
                         <ProgressBar progress={progress} available={available}  />

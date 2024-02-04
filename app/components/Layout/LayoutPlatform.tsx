@@ -2,7 +2,6 @@ import type { PropsWithChildren } from 'react'
 import { Toaster } from 'react-hot-toast'
 import MainProvider from './MainProvider'
 import Sidebar from '../Sidebar/Sidebar';
-import { headers } from 'next/headers';
 
 
 

@@ -1,29 +1,39 @@
 'use client'
 
-type ElementProps = {
+type ListItemProps = {
     type: string,
-    text: string,
-    italic: boolean,
-    bold: boolean,
-    strikethrough: boolean,
-    underline: boolean,
+    text?: string,
+    italic?: boolean,
+    bold?: boolean,
+    strikethrough?: boolean,
+    underline?: boolean,
     code?: boolean,
     url?: string,
-    children?: any
+}
+
+type ElementProps = {
+    type: string,
+    text?: string,
+    italic?: boolean,
+    bold?: boolean,
+    strikethrough?: boolean,
+    underline?: boolean,
+    code?: boolean,
+    url?: string,
+    children?: ListItemProps[]
 }
 
 interface ListElementProps {
-    children: ElementProps[],
-    format: string
+    children?: ElementProps[],
+    format?: string
 }
 
 
 const ListElement: React.FC<ListElementProps> = ({ children, format }) => {
 
-
     const Element: React.FC<ElementProps> = ({ type, text, children, url, underline, italic, strikethrough, bold, code }) => {
 
-        if (type === 'link') {
+        if (type === 'link' && children) {
             return (
                 <a
                     href={url}
@@ -68,8 +78,8 @@ const ListElement: React.FC<ListElementProps> = ({ children, format }) => {
         )
     }
 
-    const ListItem = ({ children }: {children: ElementProps[]}) => {
-        
+    const ListItem = ({ children }: { children: ElementProps[] }) => {
+
         return (
             <>
                 {children && children.map(({ type, text, children, url, underline, italic, strikethrough, bold, code }) => (
@@ -86,7 +96,7 @@ const ListElement: React.FC<ListElementProps> = ({ children, format }) => {
             <ol className="my-2 ml-5 list-decimal">
                 {children && children.map(({ type, children }) => (
                     <li key={type}>
-                        <ListItem children={children} />
+                        <ListItem children ={children as ListItemProps[]} />
                     </li>
                 ))}
             </ol>
@@ -96,7 +106,7 @@ const ListElement: React.FC<ListElementProps> = ({ children, format }) => {
         <ul className="my-2 ml-5 list-disc">
             {children && children.map(({ type, children }) => (
                 <li key={type}>
-                    <ListItem children={children} />
+                    <ListItem children={children  as ListItemProps[]} />
                 </li>
             ))}
         </ul>
