@@ -7,7 +7,7 @@ import Search from "@/app/components/Search/Search";
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import { NoLogin } from "@/app/components/NoLogin";
 
-const Courses = async ({ searchParams }) => {
+const Courses = async ({ searchParams } : {searchParams: any}) => {
 
     const coursesData = await getCourses(searchParams)
     const categories: CategoryProps[] = await getCategories()

@@ -6,11 +6,17 @@ import SectionHeader from "@/app/components/Header/SectionHeader";
 import CourseCard from "@/app/components/Courses/CourseCard";
 import { useSession } from "next-auth/react";
 
-interface ClientProps {
-    courseData: any
-    categories: any
+interface CoursesClientProps {
+    coursesData: {
+        id: any;
+        attributes: any;
+    }[]
+    categories?: any
+    categoriesList: any
+
 }
-const Client = ({
+
+const Client: React.FC<CoursesClientProps> = ({
     coursesData,
     categoriesList
 }) => {
@@ -21,14 +27,14 @@ const Client = ({
     if (!session && status != "loading") {
         router.push('/login')
     }
-    
-    const formatCategories = (categories) => {
-        const formatedCatgories = categories.map((category) => { return { id: category.id, name: category.attributes.name } })
+
+    const formatCategories = (categories: any) => {
+        const formatedCatgories = categories.map((category: any) => { return { id: category.id, name: category.attributes.name } })
         return formatedCatgories
     }
 
-    const formatItems = (items) => {
-        const formatedItems = items.map((item) => { return { id: item.id, type: item.attributes.type } })
+    const formatItems = (items: any) => {
+        const formatedItems = items.map((item: any) => { return { id: item.id, type: item.attributes.type } })
         return formatedItems
     }
 

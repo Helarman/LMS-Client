@@ -4,7 +4,15 @@ import { FaAngleDown, FaAngleRight, FaAngleUp } from "react-icons/fa6";
 import CourseResultCard from "./CourseResultCard";
 import { useState } from "react";
 
-const CourseResultSection = ({ title, results }) => {
+interface CourseResultSectionProps{
+    title: string;
+    results: {
+        id: number;
+        attributes: any;
+    }[]
+}
+
+const CourseResultSection: React.FC<CourseResultSectionProps> = ({ title, results }) => {
 
     const [isAllShown, setIsAllShown] = useState(false)
 

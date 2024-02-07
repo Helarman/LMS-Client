@@ -10,10 +10,6 @@ const Platform = async () => {
     const coursesResults = await getCoursesResultsByUser()
     const currentUser = await getCurrentUser()
 
-    if (!currentUser) {
-        return <NoLogin />
-    }
-
     return (
         <PlatformClient itemsResults={itemsResults} coursesResults={coursesResults} />
     )

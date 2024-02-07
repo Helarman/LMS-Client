@@ -3,7 +3,7 @@
 import { getServerSession } from "next-auth"
 import axios from "axios";
 
-export default async function getCourses(searchParams) {
+export default async function getCourses({searchParams} : {searchParams: any}) {
 
     
     let searchQuery

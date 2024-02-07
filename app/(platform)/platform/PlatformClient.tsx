@@ -8,13 +8,16 @@ import FileResultSection from "@/app/components/Result/FileResultSection";
 import TestResultSection from "@/app/components/Result/TestResultSection";
 import CourseResultSection from "@/app/components/Result/CourseResultSection";
 
-const Client = ({ itemsResults, coursesResults }) => {
+interface PlatformClientProps {
+    itemsResults: any;
+    coursesResults: any;
+}
+const Client: React.FC<PlatformClientProps> = ({ itemsResults, coursesResults }) => {
     const router = useRouter();
 
     const { data: session, status } = useSession()
 
     const [hasMounted, setHasmounted] = useState(false);
-    const [hasLogged, sethasLogged] = useState(false);
 
     useEffect(() => {
         setHasmounted(true)

@@ -3,7 +3,10 @@
 import LessonCard from "../Lesson/LessonCard";
 
 interface CourseBodyProps {
-    items: any;
+    items: {
+        id: number;
+        attributes: any;
+    }[]
 }
 
 const CourseBody: React.FC<CourseBodyProps> = ({

@@ -4,7 +4,20 @@ import Accordion from "@/app/components/Accordion/Accordion";
 import SectionHeader from "@/app/components/Header/SectionHeader";
 import TextElement from "@/app/components/TextElement/TextElement"
 
-const Client = ({ faqData }: { faqData: any }) => {
+interface FaqClientProps {
+    faqData: {
+        attributes: {
+            title: string;
+            faq: {
+                id: number;
+                title: string;
+                content: any;
+            }[]
+        }
+    }
+}
+
+const FaqClient: React.FC<FaqClientProps> = ({ faqData }) => {
     return (
         <>
             <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 min-h-screen">
@@ -24,4 +37,4 @@ const Client = ({ faqData }: { faqData: any }) => {
     )
 }
 
-export default Client;
+export default FaqClient;

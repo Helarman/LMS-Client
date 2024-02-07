@@ -31,7 +31,7 @@ const Navbar = ({ pathname }: { pathname: string | null }) => {
                 <div className="flex h-16 items-center justify-between">
                     <div className="md:flex md:items-center md:gap-12">
                         <a className="block text-black uppercase " href="/">
-                             // Logotype
+                             Logotype
                         </a>
                     </div>
 

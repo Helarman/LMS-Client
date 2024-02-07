@@ -4,10 +4,19 @@ import CourseCard from "./CourseCard";
 import SectionHeader from "../Header/SectionHeader";
 import EmptyState from "./EmptyState";
 
+interface CardProps {
+    id: number;
+    title: string;
+    description: string;
+    price: number;
+    categories: any;
+    items: any;
+}
+
 interface CoursesSectionProps {
     title: string;
     subTitle?: string;
-    cards?: any;
+    cards?: CardProps[]
     results?: any;
     available: boolean;
 }
@@ -19,12 +28,12 @@ const CoursesSection: React.FC<CoursesSectionProps> = ({
     results,
     available
 }) => {
-    const getProgress = (id) => {
-        const structuredResults = results.map((result) => { return { progress: result.attributes.progress, id: result.attributes.course.data.id } })
-        const progress = structuredResults.filter((result) => result.id == id)[0].progress
+    const getProgress = (id: number) => {
+        const structuredResults = results.map((result: any) => { return { progress: result.attributes.progress, id: result.attributes.course.data.id } })
+        const progress = structuredResults.filter((result: any) => result.id == id)[0].progress
         return progress
     }
-  
+
     return (
         <div>
             <SectionHeader title={title} subTitle={subTitle} />

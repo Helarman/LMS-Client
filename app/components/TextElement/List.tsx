@@ -84,7 +84,7 @@ const ListElement: React.FC<ListElementProps> = ({ children, format }) => {
             <>
                 {children && children.map(({ type, text, children, url, underline, italic, strikethrough, bold, code }) => (
                     <div key={type}>
-                        <Element type={type} text={text} children={children} url={url} underline={underline} italic={italic} strikethrough={strikethrough} bold={bold} code={code} />
+                        <Element type={type} text={text} url={url} underline={underline} italic={italic} strikethrough={strikethrough} bold={bold} code={code}>{children}</Element>
                     </div>
                 ))}
             </>
@@ -96,7 +96,7 @@ const ListElement: React.FC<ListElementProps> = ({ children, format }) => {
             <ol className="my-2 ml-5 list-decimal">
                 {children && children.map(({ type, children }) => (
                     <li key={type}>
-                        <ListItem children ={children as ListItemProps[]} />
+                        <ListItem>{children as ListItemProps[]}</ListItem>
                     </li>
                 ))}
             </ol>
@@ -106,7 +106,7 @@ const ListElement: React.FC<ListElementProps> = ({ children, format }) => {
         <ul className="my-2 ml-5 list-disc">
             {children && children.map(({ type, children }) => (
                 <li key={type}>
-                    <ListItem children={children  as ListItemProps[]} />
+                    <ListItem>{children as ListItemProps[]}</ListItem>
                 </li>
             ))}
         </ul>

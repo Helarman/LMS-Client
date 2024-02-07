@@ -4,7 +4,12 @@ import { useRouter } from "next/navigation";
 import ProgressBar from "../Courses/ProgressBar";
 import { FaBookOpen, FaClock } from "react-icons/fa6";
 
-const CourseResultCard = ({ progress, course }) => {
+interface CourseResultCardProps{
+    progress: number;
+    course: any;
+}
+
+const CourseResultCard: React.FC<CourseResultCardProps> = ({ progress, course }) => {
     const router = useRouter();
     return (
         <article

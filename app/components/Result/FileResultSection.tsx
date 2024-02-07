@@ -5,7 +5,15 @@ import FileResultCard from "./FileResultCard";
 import ProgressBar from "../Courses/ProgressBar";
 import { useState } from "react";
 
-const FileResultSection = ({ title, results }) => {
+interface FileResultSectionProps{
+    title: string;
+    results:{
+        id: number;
+        attributes: any;
+    }[];
+}
+
+const FileResultSection: React.FC<FileResultSectionProps> = ({ title, results }) => {
 
     const [isAllShown, setIsAllShown] = useState(false)
 

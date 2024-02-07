@@ -1,22 +1,21 @@
 'use client'
 import { UploadDropzone } from "@uploadthing/react";
-import type { OurFileRouter } from "@/app/api/uploadthing/core";
 import toast from "react-hot-toast";
 import { useParams, useRouter } from "next/navigation";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
 
-const FileElement = ({ currentUserId }: { currentUserId: any }) => {
+const FileElement = ({ currentUserId }) => {
     const pathname = useParams();
     const router = useRouter();
     const [userId, setUserId] = useState(0)
 
     useEffect(() => {
-        setUserId(currentUserId.value as number)
+        setUserId(currentUserId.value)
     })
 
-    const onSubmit = async (url: string) => {
+    const onSubmit = async (url) => {
         
         if (!pathname) return;
 
@@ -34,7 +33,7 @@ const FileElement = ({ currentUserId }: { currentUserId: any }) => {
             toast.success("Result updated");
             router.refresh();
 
-        } catch (error: any) {
+        } catch (error) {
             toast.error("Something went wrong", error);
         }
     };
@@ -76,7 +75,7 @@ const FileElement = ({ currentUserId }: { currentUserId: any }) => {
                     
                 `}
                 >
-                    <UploadDropzone<OurFileRouter>
+                    <UploadDropzone
                         appearance={{
                             button: "ut-ready:bg-emerald-400 text-gray-800 ut-uploading:cursor-not-allowed  ut-uploading:bg-emerald-300 after:bg-emerald-400",
                         }}
@@ -94,7 +93,7 @@ const FileElement = ({ currentUserId }: { currentUserId: any }) => {
                             toast.success("Upload Completed");
 
                         }}
-                        onUploadError={(error: Error) => {
+                        onUploadError={(error) => {
                             toast.error(`Upload error!`);
 
                         }}

@@ -34,7 +34,7 @@ type ElementProps = {
     children?: ChildrenProps[],
 }
 
-export interface HeadingProps{
+export interface HeadingProps {
     children: ElementProps[];
     level: number
     type?: string
@@ -114,7 +114,7 @@ const Heading: React.FC<HeadingProps> = ({ children, level, type }) => {
         <>
             {children && children.map(({ type, text, children, url, underline, italic, strikethrough, bold, code }) => (
                 <div key={type}>
-                    <Element type={type} text={text} children={children} url={url} underline={underline} italic={italic} strikethrough={strikethrough} bold={bold} code={code} />
+                    <Element type={type} text={text} url={url} underline={underline} italic={italic} strikethrough={strikethrough} bold={bold} code={code}> {children as any}</Element>
                 </div>
             ))}
 

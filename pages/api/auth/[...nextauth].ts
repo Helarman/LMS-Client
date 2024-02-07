@@ -9,12 +9,12 @@ export default NextAuth({
     })
   ],
   callbacks: {
-    session: async ({ session, token }) => {
+    session: async ({ session, token }: { token: any, session: any }) => {
       session.id = token.id;
       session.jwt = token.jwt;
       return Promise.resolve(session);
     },
-    jwt: async ({ token, user }) => {
+    jwt: async ({ token, user }: { token: any, user: any }) => {
       const isSignIn = user ? true : false;
       if (isSignIn) {
         token.id = user.id;

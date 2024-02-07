@@ -5,7 +5,15 @@ import TestResultCard from "./TestResultCard";
 import ProgressBar from "../Courses/ProgressBar";
 import { useState } from "react";
 
-const TestResultSection = ({ title, results }) => {
+interface TestResultSectionProps{
+    title: string;
+    results:{
+        id: number;
+        attributes: any;
+    }[];
+}
+
+const TestResultSection: React.FC<TestResultSectionProps> = ({ title, results }) => {
     const [isAllShown, setIsAllShown] = useState(false)
 
     const toggleIsAllShown = () => {
