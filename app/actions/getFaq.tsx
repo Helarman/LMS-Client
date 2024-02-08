@@ -9,7 +9,7 @@ export default async function getFAQ() {
         if (!session?.user?.email) {
             return null;
         }
-        const res = await axios.get(`http://127.0.0.1:1337/api/faq?populate=*`);
+        const res = await axios.get(`https://lmsadmin-ew58.onrender.com/api/faq?populate=*`);
 
         const FAQ = res.data.data
 

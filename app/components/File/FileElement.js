@@ -20,7 +20,7 @@ const FileElement = ({ currentUserId }) => {
         if (!pathname) return;
 
         try {
-            await axios.post('http://127.0.0.1:1337/api/results?populate=*',
+            await axios.post('https://lmsadmin-ew58.onrender.com/api/results?populate=*',
                 {
                     data: {
                         type: 'examination',

@@ -16,7 +16,7 @@ export default async function getCategories() {
             return null;
         }
 
-        const res = await axios.get(`http://127.0.0.1:1337/api/categories?fields[0]=name`);
+        const res = await axios.get(`https://lmsadmin-ew58.onrender.com/api/categories?fields[0]=name`);
 
         const categories = res.data.data.map((category: CategoryProps) => { return { id: category.id, name: category.attributes.name } })
         if (!categories) {

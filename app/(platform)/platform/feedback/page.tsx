@@ -32,7 +32,7 @@ const FeedbackPage = () => {
             return
         }
         try {
-            await axios.post('http://127.0.0.1:1337/api/tickets?populate=*',
+            await axios.post('https://lmsadmin-ew58.onrender.com/api/tickets?populate=*',
                 {
                     data: {
                         email: session?.user?.email,

@@ -14,7 +14,7 @@ export default async function getCourseById({ id }: { id: number }) {
             return null;
         }
 
-        const res = await axios.get(`http://127.0.0.1:1337/api/courses/${id}?populate=*`);
+        const res = await axios.get(`https://lmsadmin-ew58.onrender.com/api/courses/${id}?populate=*`);
 
         const courseData = res.data.data
 

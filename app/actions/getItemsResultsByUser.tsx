@@ -9,7 +9,7 @@ export default async function getItemsResultsByUser() {
         if (!session?.user?.email) {
             return null;
         }
-        const res = await axios.get(`http://127.0.0.1:1337/api/results?filters[user][email][$eq]=${session.user.email}&populate=*`);
+        const res = await axios.get(`https://lmsadmin-ew58.onrender.com/api/results?filters[user][email][$eq]=${session.user.email}&populate=*`);
 
         const result = res.data.data;
 

@@ -10,7 +10,7 @@ export default async function getCoursePrviewById() {
             return null;
         }
 
-        const res = await axios.get(`http://127.0.0.1:1337/api/courses`);
+        const res = await axios.get(`https://lmsadmin-ew58.onrender.com/api/courses`);
 
         const currentUser = res.data[0]
 

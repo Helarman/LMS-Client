@@ -9,7 +9,7 @@ export default async function getCoursesResultsByUser() {
         if (!session?.user?.email) {
             return null;
         }
-        const res = await axios.get(`http://127.0.0.1:1337/api/course-results?filters[user][email][$eq]=${session.user.email}&populate=*`);
+        const res = await axios.get(`https://lmsadmin-ew58.onrender.com/api/course-results?filters[user][email][$eq]=${session.user.email}&populate=*`);
 
         const result = res.data.data;
 
