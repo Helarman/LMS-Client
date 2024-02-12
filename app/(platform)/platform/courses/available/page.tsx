@@ -9,19 +9,16 @@ const Courses = async () => {
 
     const userCourses = await getCoursesByCurrentUser()
     const userResults = await getCourseResultsByCurrentUser()
-    const currentUser = await getCurrentUser()
 
-    if (!currentUser) {
-        return <NoLogin />
-    }
-    
-    if (userCourses.length < 1) {
+    console.log(userCourses)
+    if (!userCourses) {
         return (
             <>
-                <EmptyState  title="Avilable courses" subTitle="Lorem ipsum dolor sit amet" buttonLabel="Browse courses" url="/platform/courses"/>
+                <EmptyState title="Avilable courses" subTitle="Lorem ipsum dolor sit amet" buttonLabel="Browse courses" url="/platform/courses" />
             </>
         )
     }
+
     return (
         <AvailableCoursesClient userCourses={userCourses} userResults={userResults}/>
     )
