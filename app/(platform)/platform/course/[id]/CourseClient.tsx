@@ -32,11 +32,7 @@ const CoursesClient: React.FC<CourseClient> = ({
         router.push('/login')
     }
 
-    if (!courseData) {
-        router.push('/platform')
-        return null
-    }
-    
+
     return (
         <div>
             <CourseHeader title={courseData.attributes.title} description={courseData.attributes.description} />

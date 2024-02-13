@@ -38,15 +38,16 @@ const CourseCard: React.FC<CourseCardProps> = ({
 
     return (
         <>
-            <article
+            <div
                 onClick={() => router.push(`/platform/course/${id}`)}
-                className="group hover:bg-indigo-50 bg-white p-4 shadow-lg sm:p-6 lg:p-8 cursor-pointer">
-                <div className="flex items-center sm:gap-8">
-                    <div className=" relative w-72">
-                        <ProgressBar progress={progress} available={available}  />
+                className="group hover:bg-indigo-50 bg-white p-4 shadow-lg sm:p-6 lg:p-8 cursor-pointer max-h-56">
+                    
+                <div className="flex items-center sm:gap-8 max-h-56">
+                    <div className=" relative w-72 ">
+                        <ProgressBar progress={progress} available={available} />
                     </div>
 
-                    <div className="items-center">
+                    <div className="items-center max-h-56">
                         {categories && categories.map(({ id, name }) => (
                             <strong key={id}
                                 className="mr-2 border first:border-emerald-400 first:bg-emerald-400 border-gray-300 bg-gray-400 px-3 py-1.5 text-[10px] font-medium text-white"
@@ -79,7 +80,7 @@ const CourseCard: React.FC<CourseCardProps> = ({
                         </div>
                     </div>
                 </div>
-            </article >
+            </div >
         </>
     )
 };

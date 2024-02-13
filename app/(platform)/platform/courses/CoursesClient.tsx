@@ -58,6 +58,7 @@ const Client: React.FC<CoursesClientProps> = ({
                                     available={false}
                                     categories={formatCategories(attributes.categories.data)}
                                     items={formatItems(attributes.items.data)} />
+                                    
                             </li>
                         ))}
 

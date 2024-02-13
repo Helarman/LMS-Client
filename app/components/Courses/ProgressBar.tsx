@@ -27,49 +27,48 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ progress, available, type }) 
 
     if (available) {
         return (
-            <>
-                < div >
-                    <svg className="h-full w-full" width="36" height="36" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+            <>  <div className="h-full w-full">
+                <svg className=" h-full w-full" width="36" height="36" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
 
-                        <circle cx="18" cy="18" r="16" fill="none"
-                            className={`
+                    <circle cx="18" cy="18" r="16" fill="none"
+                        className={`
                                 ${roundedProgress == 100 || type === 'examination' ? 'text-emerald-400' : 'text-gray-200'}
                                 stroke-current 
                             `}
-                            strokeWidth="2"></circle>
+                        strokeWidth="2"></circle>
 
-                        <g className="origin-center -rotate-90 transform">
-                            <circle
-                                cx="18" cy="18" r="16" fill="none"
-                                className={`
+                    <g className="origin-center -rotate-90 transform">
+                        <circle
+                            cx="18" cy="18" r="16" fill="none"
+                            className={`
                                     ${roundedProgress == 0 && type != 'examination' ? 'text-gray-200 ' : 'text-emerald-400'}
                                     stroke-current 
                                 `}
-                                strokeWidth="2"
-                                strokeDasharray="100"
-                                strokeDashoffset={strokeDashoffset}
-                            ></circle>
-                        </g>
-                    </svg>
-                    {type === 'examination' ?
-                        <div className="absolute top-1/2 start-1/2 transform -translate-y-1/2 -translate-x-1/2">
-                            <span className="text-center text-2xl font-bold text-gray-800">
-                                <PiExamFill className="w-10 h-10"/>
-                            </span>
-                        </div>
-                        :
+                            strokeWidth="2"
+                            strokeDasharray="100"
+                            strokeDashoffset={strokeDashoffset}
+                        ></circle>
+                    </g>
+                </svg>
+                {type === 'examination' ?
+                    <div className="absolute top-1/2 start-1/2 transform -translate-y-1/2 -translate-x-1/2">
+                        <span className="text-center text-2xl font-bold text-gray-800">
+                            <PiExamFill className="w-10 h-10" />
+                        </span>
+                    </div>
+                    :
 
-                        <div className="absolute top-1/2 start-1/2 transform -translate-y-1/2 -translate-x-1/2">
-                            <span className="text-center text-2xl font-bold text-gray-800">
-                                {roundedProgress == 100 ?
-                                    <FaCheck />
-                                    :
-                                    `${roundedProgress}%`
-                                }
-                            </span>
-                        </div>
-                    }
-                </div >
+                    <div className="absolute top-1/2 start-1/2 transform -translate-y-1/2 -translate-x-1/2">
+                        <span className="text-center text-2xl font-bold text-gray-800">
+                            {roundedProgress == 100 ?
+                                <FaCheck />
+                                :
+                                `${roundedProgress}%`
+                            }
+                        </span>
+                    </div>
+                }
+            </div>
             </>
         )
     }

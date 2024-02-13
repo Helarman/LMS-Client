@@ -39,8 +39,8 @@ export default async function getCourses({ searchParams }: { searchParams: any }
         if (!session?.user?.email) {
             return null;
         }
-
-        const res = await axios.get(`https://lmsadmin-ew58.onrender.com/api/courses?filters[title][$containsi]=${searchQuery}&&filters[categories][name][$containsi]=${categoryQuery}&populate[0]=users&populate[1]=categories&populate[2]=items`);
+        /*filters[title][$containsi]=${searchQuery}&filters[categories][name][$containsi]=${categoryQuery}&*/
+        const res = await axios.get(`https://lmsadmin-ew58.onrender.com/api/courses?populate[0]=users&populate[1]=categories&populate[2]=items`);
 
         const coursesData = res.data.data
 

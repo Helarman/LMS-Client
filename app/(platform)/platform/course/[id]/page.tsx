@@ -11,11 +11,6 @@ const Page = async ({ params }: { params: IParams }) => {
   const courseData = await getCourseById({ id: params.id })
   const currentUser = await getCurrentUser()
 
-  if (!currentUser) {
-    return <NoLogin />
-  }
-
-
   return (
     <div>
 
